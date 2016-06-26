@@ -3,11 +3,13 @@ package grady.jacob.kata.vending_machine.main;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 import grady.jacob.kata.vending_machine.main.coins.Coin;
 import grady.jacob.kata.vending_machine.main.coins.Dime;
 import grady.jacob.kata.vending_machine.main.coins.Nickel;
 import grady.jacob.kata.vending_machine.main.coins.Quarter;
+import grady.jacob.kata.vending_machine.main.products.Product;
 
 public class Machine {
 	
@@ -69,5 +71,33 @@ public class Machine {
 		}
 		
 		return this.displayMessage;
+	}
+
+	public boolean selectProdct(String selection) {
+		HashMap<String, Product> productInventory = new HashMap<String, Product>();
+		
+		productInventory.put("a1", new Product());
+		productInventory.put("a2", new Product());
+		productInventory.put("a3", new Product());
+		productInventory.put("a4", new Product());
+		productInventory.put("a5", new Product());
+		
+		productInventory.put("b1", new Product());
+		productInventory.put("b2", new Product());
+		productInventory.put("b3", new Product());
+		productInventory.put("b4", new Product());
+		productInventory.put("b5", new Product());
+		
+		productInventory.put("c1", new Product());
+		productInventory.put("c2", new Product());
+		productInventory.put("c3", new Product());
+		productInventory.put("c4", new Product());
+		productInventory.put("c5", new Product());
+		
+		if(productInventory.containsKey(selection)) {
+			return true;
+		}
+		
+		return false;
 	}
 }

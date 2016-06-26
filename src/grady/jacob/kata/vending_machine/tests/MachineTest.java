@@ -89,4 +89,12 @@ public class MachineTest {
 		ArrayList<Coin> actual = this.Machine.getReturnedCoins();
 		assertEquals(actual.size(), expected.size());
 	}
+	
+	@Test
+	public void machineAcceptsProductSelection() {
+		this.Machine.insertCoin(this.quarterValues);
+		this.Machine.insertCoin(this.quarterValues);
+		
+		assertTrue(this.Machine.selectProdct("b3"));
+	}
 }
