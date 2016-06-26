@@ -20,4 +20,14 @@ public class MachineTest {
 		assertTrue(Machine.insertCoin(nickelValues));
 		
 	}
+
+	@Test
+	public void machineAcceptsCoinDime() {
+		ArrayList<Double> dimeValues = new ArrayList<Double>(Arrays.asList(2.268, 17.91, 1.35));
+		
+		Machine Machine = new Machine();
+		
+		assertTrue(Machine.insertCoin(dimeValues));
+		
+	}
 }
