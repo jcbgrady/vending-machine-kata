@@ -15,10 +15,12 @@ public class MachineTest {
 	
 	private ArrayList<Double> nickelValues = new ArrayList<Double>();
 	private ArrayList<Double> dimeValues = new ArrayList<Double>();
+	private ArrayList<Double> quarterValues = new ArrayList<Double>();
 	
 	public MachineTest() {
 		this.nickelValues = new ArrayList<Double>(Arrays.asList(5.0, 21.21, 1.95));
 		this.dimeValues = new ArrayList<Double>(Arrays.asList(2.268, 17.91, 1.35));
+		this.quarterValues = new ArrayList<Double>(Arrays.asList(5.67, 24.26, 1.75));
 	}
 
 	@Test
@@ -29,5 +31,10 @@ public class MachineTest {
 	@Test
 	public void machineAcceptsCoinDime() {
 		assertTrue(Machine.insertCoin(this.dimeValues));
+	}
+
+	@Test
+	public void machineAcceptsCoinQuarter() {
+		assertTrue(Machine.insertCoin(this.quarterValues));
 	}
 }
