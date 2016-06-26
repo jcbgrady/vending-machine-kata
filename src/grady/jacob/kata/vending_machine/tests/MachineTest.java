@@ -9,6 +9,7 @@ import java.util.Arrays;
 import org.junit.Test;
 
 import grady.jacob.kata.vending_machine.main.Machine;
+import grady.jacob.kata.vending_machine.main.coins.Coin;
 
 public class MachineTest {
 
@@ -84,6 +85,8 @@ public class MachineTest {
 	public void machineReturnsInvalidCoins() {
 		this.machineRejectsCoinPenny();
 		
-		assertTrue(this.Machine.checkReturnedCoins());
+		ArrayList<Coin> expected = new ArrayList<Coin>(Arrays.asList(new Coin()));
+		ArrayList<Coin> actual = this.Machine.getReturnedCoins();
+		assertEquals(actual.size(), expected.size());
 	}
 }

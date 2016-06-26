@@ -17,14 +17,11 @@ public class Machine {
 	private BigDecimal currentAmount = new BigDecimal("0.00");
 	
 	private ArrayList<Coin> acceptableCoins = new ArrayList<Coin>();
-	private boolean returnedCoins;
+	private ArrayList<Coin> collectedCoins = new ArrayList<Coin>();
+	private ArrayList<Coin> returnedCoins = new ArrayList<Coin>();
 	
 	public Machine() {
-		Nickel Nickel = new Nickel();
-		Dime Dime = new Dime();
-		Quarter Quarter = new Quarter();
-		
-		this.acceptableCoins.addAll(Arrays.asList(Nickel, Dime, Quarter));
+		this.acceptableCoins.addAll(Arrays.asList(new Nickel(), new Dime(), new Quarter()));
 	}
 
 	public String insertCoin(ArrayList<Double> coinWeightDiameterThickness) {
@@ -41,19 +38,21 @@ public class Machine {
 
 	private Coin isCoinAcceptable (ArrayList<Double> coinValues) throws Exception {
 		for(Coin Coin : this.acceptableCoins)
-			if(coinValues.equals(Coin.getCoinWeightDiameterThickness()))
+			if(coinValues.equals(Coin.getCoinWeightDiameterThickness())) {
+				this.collectedCoins.add(Coin);
 				return Coin;
+			}
 		
-		this.returnedCoins = true;
+		this.returnedCoins.add(new Coin());
 		throw new Exception("Coin is not acceptable");
+	}
+
+	public ArrayList<Coin> getReturnedCoins() {
+		return this.returnedCoins;
 	}
 
 	private void addCoinValueToCurrentAmount(BigDecimal coinValue) {
 		this.currentAmount = this.currentAmount.add(coinValue);
-	}
-
-	public boolean checkReturnedCoins() {
-		return this.returnedCoins;
 	}
 
 	public BigDecimal getCurrentAmount() {
