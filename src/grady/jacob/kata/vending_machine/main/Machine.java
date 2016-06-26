@@ -17,6 +17,7 @@ public class Machine {
 	private BigDecimal currentAmount = new BigDecimal("0.00");
 	
 	private ArrayList<Coin> acceptableCoins = new ArrayList<Coin>();
+	private boolean returnedCoins;
 	
 	public Machine() {
 		Nickel Nickel = new Nickel();
@@ -43,11 +44,16 @@ public class Machine {
 			if(coinValues.equals(Coin.getCoinWeightDiameterThickness()))
 				return Coin;
 		
+		this.returnedCoins = true;
 		throw new Exception("Coin is not acceptable");
 	}
 
 	private void addCoinValueToCurrentAmount(BigDecimal coinValue) {
 		this.currentAmount = this.currentAmount.add(coinValue);
+	}
+
+	public boolean checkReturnedCoins() {
+		return this.returnedCoins;
 	}
 
 	public BigDecimal getCurrentAmount() {

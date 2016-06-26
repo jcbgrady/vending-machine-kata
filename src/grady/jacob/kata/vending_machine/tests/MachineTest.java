@@ -79,4 +79,11 @@ public class MachineTest {
 		String actual = this.Machine.getDisplayMessage();
 		assertEquals(expected, actual);
 	}
+	
+	@Test
+	public void machineReturnsInvalidCoins() {
+		this.machineRejectsCoinPenny();
+		
+		assertTrue(this.Machine.checkReturnedCoins());
+	}
 }
