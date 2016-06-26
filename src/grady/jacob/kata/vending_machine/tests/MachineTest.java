@@ -11,23 +11,23 @@ import grady.jacob.kata.vending_machine.main.Machine;
 
 public class MachineTest {
 
+	private Machine Machine = new Machine();
+	
+	private ArrayList<Double> nickelValues = new ArrayList<Double>();
+	private ArrayList<Double> dimeValues = new ArrayList<Double>();
+	
+	public MachineTest() {
+		this.nickelValues = new ArrayList<Double>(Arrays.asList(5.0, 21.21, 1.95));
+		this.dimeValues = new ArrayList<Double>(Arrays.asList(2.268, 17.91, 1.35));
+	}
+
 	@Test
 	public void machineAcceptsCoinNickel() {
-		ArrayList<Double> nickelValues = new ArrayList<Double>(Arrays.asList(5.0, 21.21, 1.95));
-		
-		Machine Machine = new Machine();
-		
-		assertTrue(Machine.insertCoin(nickelValues));
-		
+		assertTrue(Machine.insertCoin(this.nickelValues));
 	}
 
 	@Test
 	public void machineAcceptsCoinDime() {
-		ArrayList<Double> dimeValues = new ArrayList<Double>(Arrays.asList(2.268, 17.91, 1.35));
-		
-		Machine Machine = new Machine();
-		
-		assertTrue(Machine.insertCoin(dimeValues));
-		
+		assertTrue(Machine.insertCoin(this.dimeValues));
 	}
 }

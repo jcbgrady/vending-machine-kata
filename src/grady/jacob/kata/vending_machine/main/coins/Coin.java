@@ -9,12 +9,12 @@ public class Coin {
 	private Double thicknessInMillimeters = 0.0;
 	
 	public ArrayList<Double> getCoinWeightDiameterThickness() {
-		ArrayList<Double> coinWeightDiameterThickness = new ArrayList<Double>();
-		coinWeightDiameterThickness.add(this.weightInGrams);
-		coinWeightDiameterThickness.add(this.diameterInMillimeters);
-		coinWeightDiameterThickness.add(this.thicknessInMillimeters);
+		ArrayList<Double> coinValues = new ArrayList<Double>();
+		coinValues.add(this.weightInGrams);
+		coinValues.add(this.diameterInMillimeters);
+		coinValues.add(this.thicknessInMillimeters);
 		
-		return coinWeightDiameterThickness;
+		return coinValues;
 	}
 	
 	protected void setWeightInGrams(Double weightInGrams) {
