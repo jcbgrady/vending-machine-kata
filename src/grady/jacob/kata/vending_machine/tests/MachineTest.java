@@ -55,4 +55,13 @@ public class MachineTest {
 		BigDecimal actual = this.Machine.getCurrentAmount();
 		assertEquals(expected, actual);
 	}
+	
+	@Test
+	public void machineDisplayIsUpdated() {
+		this.machineAddsCoinAmountToCurrentAmount();
+		
+		String expected = "0.15";
+		String actual = this.Machine.getDisplayMessage();
+		assertEquals(expected, actual);
+	}
 }

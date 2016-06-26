@@ -11,6 +11,8 @@ import grady.jacob.kata.vending_machine.main.coins.Quarter;
 
 public class Machine {
 	
+	private String displayMessage;
+	
 	private BigDecimal currentAmount = new BigDecimal("0.00");
 	
 	private ArrayList<Coin> acceptableCoins = new ArrayList<Coin>();
@@ -42,11 +44,20 @@ public class Machine {
 		throw new Exception("Coin is not acceptable");
 	}
 
-	private void addCoinValueToCurrentAmount(BigDecimal coinValue) throws Exception {
+	private void addCoinValueToCurrentAmount(BigDecimal coinValue) {
 		this.currentAmount = this.currentAmount.add(coinValue);
+		this.setDisplayMessage(this.currentAmount.toString());
 	}
 
 	public BigDecimal getCurrentAmount() {
 		return this.currentAmount;
+	}
+
+	public void setDisplayMessage(String message) {
+		this.displayMessage = message;
+	}
+
+	public String getDisplayMessage() {
+		return this.displayMessage;
 	}
 }
