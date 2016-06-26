@@ -24,19 +24,18 @@ public class Machine {
 		Quarter Quarter = new Quarter();
 		
 		this.acceptableCoins.addAll(Arrays.asList(Nickel, Dime, Quarter));
-		
-		this.setDisplayMessage(this.displayMessageDefault);
 	}
 
-	public boolean insertCoin(ArrayList<Double> coinWeightDiameterThickness) {
+	public String insertCoin(ArrayList<Double> coinWeightDiameterThickness) {
 		try {
-			Coin Coin = isCoinAcceptable(coinWeightDiameterThickness);
-			addCoinValueToCurrentAmount(Coin.getValue());
-			return true;
+			Coin Coin = this.isCoinAcceptable(coinWeightDiameterThickness);
+			this.addCoinValueToCurrentAmount(Coin.getValue());
+			this.setDisplayMessage(this.currentAmount.toString());
 		} catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
-		return false;
+		
+		return this.getDisplayMessage();
 	}
 
 	private Coin isCoinAcceptable (ArrayList<Double> coinValues) throws Exception {
@@ -49,7 +48,6 @@ public class Machine {
 
 	private void addCoinValueToCurrentAmount(BigDecimal coinValue) {
 		this.currentAmount = this.currentAmount.add(coinValue);
-		this.setDisplayMessage(this.currentAmount.toString());
 	}
 
 	public BigDecimal getCurrentAmount() {
@@ -61,6 +59,10 @@ public class Machine {
 	}
 
 	public String getDisplayMessage() {
+		if(this.displayMessage == null) {
+			this.setDisplayMessage(this.displayMessageDefault);
+		}
+		
 		return this.displayMessage;
 	}
 }

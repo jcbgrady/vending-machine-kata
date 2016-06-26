@@ -25,31 +25,39 @@ public class MachineTest {
 		this.dimeValues = new ArrayList<Double>(Arrays.asList(2.268, 17.91, 1.35));
 		this.quarterValues = new ArrayList<Double>(Arrays.asList(5.67, 24.26, 1.75));
 	}
-
-	@Test
-	public void machineAcceptsCoinNickel() {
-		assertTrue(Machine.insertCoin(this.nickelValues));
-	}
-
-	@Test
-	public void machineAcceptsCoinDime() {
-		assertTrue(Machine.insertCoin(this.dimeValues));
-	}
-
-	@Test
-	public void machineAcceptsCoinQuarter() {
-		assertTrue(Machine.insertCoin(this.quarterValues));
-	}
-	
-	@Test
-	public void machineRejectsCoinPenny() {
-		assertFalse(Machine.insertCoin(this.pennyValues));
-	}
 	
 	@Test
 	public void machineDisplaysDefaultMessage() {
 		String expected = "INSERT COIN";
 		String actual = this.Machine.getDisplayMessage();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void machineAcceptsCoinNickel() {
+		String expected = "0.05";
+		String actual = Machine.insertCoin(this.nickelValues);
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void machineAcceptsCoinDime() {
+		String expected = "0.10";
+		String actual = Machine.insertCoin(this.dimeValues);
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void machineAcceptsCoinQuarter() {
+		String expected = "0.25";
+		String actual = Machine.insertCoin(this.quarterValues);
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void machineRejectsCoinPenny() {
+		String expected = "INSERT COIN";
+		String actual = Machine.insertCoin(this.pennyValues);
 		assertEquals(expected, actual);
 	}
 	
