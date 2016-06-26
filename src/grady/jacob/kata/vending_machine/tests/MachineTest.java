@@ -47,6 +47,13 @@ public class MachineTest {
 	}
 	
 	@Test
+	public void machineDisplaysDefaultMessage() {
+		String expected = "INSERT COIN";
+		String actual = this.Machine.getDisplayMessage();
+		assertEquals(expected, actual);
+	}
+	
+	@Test
 	public void machineAddsCoinAmountToCurrentAmount() {
 		this.Machine.insertCoin(this.nickelValues);
 		this.Machine.insertCoin(this.dimeValues);

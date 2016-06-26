@@ -12,6 +12,7 @@ import grady.jacob.kata.vending_machine.main.coins.Quarter;
 public class Machine {
 	
 	private String displayMessage;
+	private String displayMessageDefault = "INSERT COIN";
 	
 	private BigDecimal currentAmount = new BigDecimal("0.00");
 	
@@ -23,6 +24,8 @@ public class Machine {
 		Quarter Quarter = new Quarter();
 		
 		this.acceptableCoins.addAll(Arrays.asList(Nickel, Dime, Quarter));
+		
+		this.setDisplayMessage(this.displayMessageDefault);
 	}
 
 	public boolean insertCoin(ArrayList<Double> coinWeightDiameterThickness) {
