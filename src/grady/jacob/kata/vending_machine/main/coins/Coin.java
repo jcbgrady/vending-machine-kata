@@ -19,16 +19,16 @@ public class Coin {
 		return coinValues;
 	}
 	
-	protected void setWeightInGrams(Double weightInGrams) {
-		this.weightInGrams = weightInGrams;
+	protected void setWeightInGrams(Double weight) {
+		this.weightInGrams = weight;
 	}
 	
-	protected void setDiameterInMillimeters(Double diameterInMillimeters) {
-		this.diameterInMillimeters = diameterInMillimeters;
+	protected void setDiameterInMillimeters(Double diameter) {
+		this.diameterInMillimeters = diameter;
 	}
 	
-	protected void setThicknessInMillimeters(Double thicknessInMillimeters) {
-		this.thicknessInMillimeters = thicknessInMillimeters;
+	protected void setThicknessInMillimeters(Double thickness) {
+		this.thicknessInMillimeters = thickness;
 	}
 
 	protected void setValue(BigDecimal value) {

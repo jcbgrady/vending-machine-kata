@@ -2,6 +2,7 @@ package grady.jacob.kata.vending_machine.main;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import grady.jacob.kata.vending_machine.main.coins.Coin;
 import grady.jacob.kata.vending_machine.main.coins.Dime;
@@ -19,24 +20,33 @@ public class Machine {
 		Dime Dime = new Dime();
 		Quarter Quarter = new Quarter();
 		
-		this.acceptableCoins.add(Nickel);
-		this.acceptableCoins.add(Dime);
-		this.acceptableCoins.add(Quarter);
+		this.acceptableCoins.addAll(Arrays.asList(Nickel, Dime, Quarter));
 	}
 
 	public boolean insertCoin(ArrayList<Double> coinWeightDiameterThickness) {
-		for(Coin Coin : this.acceptableCoins) {
-			if(coinWeightDiameterThickness.equals(Coin.getCoinWeightDiameterThickness())) {
-				this.currentAmount = this.currentAmount.add(Coin.getValue());
-				return true;
-			}
+		try {
+			Coin Coin = isCoinAcceptable(coinWeightDiameterThickness);
+			addCoinValueToCurrentAmount(Coin.getValue());
+			return true;
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
 		}
-		
 		return false;
+	}
+
+	private Coin isCoinAcceptable (ArrayList<Double> coinValues) throws Exception {
+		for(Coin Coin : this.acceptableCoins)
+			if(coinValues.equals(Coin.getCoinWeightDiameterThickness()))
+				return Coin;
+		
+		throw new Exception("Coin is not acceptable");
+	}
+
+	private void addCoinValueToCurrentAmount(BigDecimal coinValue) throws Exception {
+		this.currentAmount = this.currentAmount.add(coinValue);
 	}
 
 	public BigDecimal getCurrentAmount() {
 		return this.currentAmount;
 	}
-
 }
