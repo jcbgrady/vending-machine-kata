@@ -1,14 +1,15 @@
 package grady.jacob.kata.vending_machine.main;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+
+import grady.jacob.kata.vending_machine.main.coins.Nickel;
 
 public class Machine {
 
-	public boolean insertCoin(ArrayList<Double> nickelValues) {
-		ArrayList<Double> nickelWeightDiameterThickness = new ArrayList<Double>(Arrays.asList(5.0, 21.21, 1.95));
+	public boolean insertCoin(ArrayList<Double> coinWeightDiameterThickness) {
+		ArrayList<Double> nickelValues = new Nickel().getCoinWeightDiameterThickness();
 		
-		if(nickelValues.equals(nickelWeightDiameterThickness)) {
+		if(coinWeightDiameterThickness.equals(nickelValues)) {
 			return true;
 		}
 		
