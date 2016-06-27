@@ -2,7 +2,6 @@ package grady.jacob.kata.vending_machine.tests;
 
 import static org.junit.Assert.*;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -63,18 +62,9 @@ public class MachineTest {
 	}
 	
 	@Test
-	public void machineAddsCoinAmountToCurrentAmount() {
+	public void machineAddsCoinAmountToCurrentAmountAndUpdatesDisplay() {
 		this.Machine.insertCoin(this.nickelValues);
 		this.Machine.insertCoin(this.dimeValues);
-		
-		BigDecimal expected = new BigDecimal("0.15");
-		BigDecimal actual = this.Machine.getCurrentAmount();
-		assertEquals(expected, actual);
-	}
-	
-	@Test
-	public void machineDisplayIsUpdated() {
-		this.machineAddsCoinAmountToCurrentAmount();
 		
 		String expected = "0.15";
 		String actual = this.Machine.getDisplayMessage();

@@ -1,6 +1,5 @@
 package grady.jacob.kata.vending_machine.main;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import grady.jacob.kata.vending_machine.main.coins.*;
@@ -29,18 +28,13 @@ public class Machine {
 		return this.CoinBank.getReturnedCoins();
 	}
 
-	public BigDecimal getCurrentAmount() {
-		return this.CoinBank.getCurrentAmount();
-	}
-
 	public void setDisplayMessage(String message) {
 		this.displayMessage = message;
 	}
 
 	public String getDisplayMessage() {
-		if(this.displayMessage == null) {
+		if(this.displayMessage == null)
 			this.setDisplayMessage(this.displayMessageDefault);
-		}
 		
 		return this.displayMessage;
 	}

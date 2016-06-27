@@ -28,7 +28,9 @@ public class CoinBank {
 				return Coin;
 			}
 		
-		this.returnedCoins.add(new Coin());
+		// coin not identified, so add a generic coin to returned coins list
+		this.returnedCoins.add(new Coin()); 
+		
 		throw new Exception("Coin is not acceptable");
 	}
 	
