@@ -8,10 +8,6 @@ public class Product {
 	private Integer quantity = 0;
 	private BigDecimal price = new BigDecimal("0.00");
 	
-	public Product() {
-		this(1);
-	}
-	
 	public Product(Integer quantity) {
 		this.setQuantity(quantity);
 	}

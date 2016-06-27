@@ -44,7 +44,7 @@ public class Machine {
 	public boolean selectProdct(String selection) {
 		try {
 			Product Product = this.ProductInventory.selectProduct(selection);
-			this.dispensedProduct = Product;
+			this.dispenseProduct(Product);
 			this.setDisplayMessage("THANK YOU");
 			
 			return true;
@@ -53,6 +53,10 @@ public class Machine {
 		}
 		
 		return false;
+	}
+
+	private void dispenseProduct(Product Product) {
+		this.dispensedProduct = Product;
 	}
 
 	public Product checkDispenser() {
