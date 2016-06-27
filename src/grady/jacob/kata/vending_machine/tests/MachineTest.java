@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import grady.jacob.kata.vending_machine.main.Machine;
 import grady.jacob.kata.vending_machine.main.coins.Coin;
+import grady.jacob.kata.vending_machine.main.products.Product;
 
 public class MachineTest {
 
@@ -86,6 +87,17 @@ public class MachineTest {
 		this.Machine.insertCoin(this.quarterValues);
 		
 		assertTrue(this.Machine.selectProdct("b3"));
+	}
+	
+	@Test
+	public void machineDispensesPurchasedProduct() {
+		this.machineAcceptsProductSelection();
+		
+		Product Product = this.Machine.checkDispenser();
+		
+		String expected = "chips";
+		String actual = Product.getLabel();
+		assertEquals(expected, actual);
 	}
 	
 	@Test

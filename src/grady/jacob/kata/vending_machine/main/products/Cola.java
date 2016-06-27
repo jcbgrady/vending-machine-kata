@@ -6,6 +6,7 @@ public class Cola extends Product {
 	
 	public Cola(Integer quantity) {
 		super(quantity);
+		this.setLabel("cola");
 		this.setPrice(new BigDecimal("1.00"));
 	}
 

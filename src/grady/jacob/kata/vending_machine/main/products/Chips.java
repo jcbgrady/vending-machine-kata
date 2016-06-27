@@ -6,6 +6,7 @@ public class Chips extends Product {
 	
 	public Chips(Integer quantity) {
 		super(quantity);
+		this.setLabel("chips");
 		this.setPrice(new BigDecimal("1.00"));
 	}
 

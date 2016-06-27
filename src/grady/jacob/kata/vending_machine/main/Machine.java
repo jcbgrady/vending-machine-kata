@@ -13,6 +13,8 @@ public class Machine {
 	private String displayMessage;
 	private String displayMessageDefault = "INSERT COIN";
 
+	private Product dispensedProduct = null;
+
 	public String insertCoin(ArrayList<Double> coinWeightDiameterThickness) {
 		try {
 			this.CoinBank.processCoinOrReturnIt(coinWeightDiameterThickness);
@@ -42,14 +44,18 @@ public class Machine {
 	public boolean selectProdct(String selection) {
 		try {
 			Product Product = this.ProductInventory.selectProduct(selection);
-			if(Product != null) {
-				this.setDisplayMessage("THANK YOU");
-				return true;
-			}
+			this.dispensedProduct = Product;
+			this.setDisplayMessage("THANK YOU");
+			
+			return true;
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		
 		return false;
+	}
+
+	public Product checkDispenser() {
+		return this.dispensedProduct;
 	}
 }
