@@ -15,15 +15,16 @@ public class Machine {
 
 	private Product dispensedProduct = null;
 
-	public String insertCoin(ArrayList<Double> coinWeightDiameterThickness) {
+	public boolean insertCoin(ArrayList<Double> coinWeightDiameterThickness) {
 		try {
 			this.CoinBank.processCoinOrReturnIt(coinWeightDiameterThickness);
 			this.setDisplayMessage(this.CoinBank.getCurrentAmount().toString());
+			return true;
 		} catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
 		
-		return this.getDisplayMessage();
+		return false;
 	}
 
 	public ArrayList<Coin> checkForReturnedCoins() {
@@ -38,7 +39,10 @@ public class Machine {
 		if(this.displayMessage == null)
 			this.setDisplayMessage(this.displayMessageDefault);
 		
-		return this.displayMessage;
+		String message = this.displayMessage;
+		this.setDisplayMessage(null);
+		
+		return message;
 	}
 
 	public boolean selectProdct(String selection) {

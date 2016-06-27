@@ -36,29 +36,37 @@ public class MachineTest {
 
 	@Test
 	public void machineAcceptsCoinNickel() {
+		this.Machine.insertCoin(this.nickelValues);
+		
 		String expected = "0.05";
-		String actual = Machine.insertCoin(this.nickelValues);
+		String actual = this.Machine.getDisplayMessage();
 		assertEquals(expected, actual);
 	}
 
 	@Test
 	public void machineAcceptsCoinDime() {
+		this.Machine.insertCoin(this.dimeValues);
+		
 		String expected = "0.10";
-		String actual = Machine.insertCoin(this.dimeValues);
+		String actual = this.Machine.getDisplayMessage();
 		assertEquals(expected, actual);
 	}
 
 	@Test
 	public void machineAcceptsCoinQuarter() {
+		this.Machine.insertCoin(this.quarterValues);
+		
 		String expected = "0.25";
-		String actual = Machine.insertCoin(this.quarterValues);
+		String actual = this.Machine.getDisplayMessage();
 		assertEquals(expected, actual);
 	}
 	
 	@Test
 	public void machineRejectsCoinPenny() {
+		this.Machine.insertCoin(this.pennyValues);
+		
 		String expected = "INSERT COIN";
-		String actual = Machine.insertCoin(this.pennyValues);
+		String actual = this.Machine.getDisplayMessage();
 		assertEquals(expected, actual);
 	}
 	
@@ -105,6 +113,15 @@ public class MachineTest {
 		this.machineAcceptsProductSelection();
 		
 		String expected = "THANK YOU";
+		String actual = this.Machine.getDisplayMessage();
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void machineDisplaysInsertCoinAfterPurchase() {
+		this.machineThanksCustomerForPurchase();
+		
+		String expected = "INSERT COIN";
 		String actual = this.Machine.getDisplayMessage();
 		assertEquals(expected, actual);
 	}
