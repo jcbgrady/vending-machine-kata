@@ -86,7 +86,7 @@ public class MachineTest {
 		this.machineRejectsCoinPenny();
 		
 		ArrayList<Coin> expected = new ArrayList<Coin>(Arrays.asList(new Coin()));
-		ArrayList<Coin> actual = this.Machine.getReturnedCoins();
+		ArrayList<Coin> actual = this.Machine.checkForReturnedCoins();
 		assertEquals(actual.size(), expected.size());
 	}
 	
