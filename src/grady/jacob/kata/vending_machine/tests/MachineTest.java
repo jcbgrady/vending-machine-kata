@@ -87,4 +87,13 @@ public class MachineTest {
 		
 		assertTrue(this.Machine.selectProdct("b3"));
 	}
+	
+	@Test
+	public void machineThanksCustomerForPurchase() {
+		this.machineAcceptsProductSelection();
+		
+		String expected = "THANK YOU";
+		String actual = this.Machine.getDisplayMessage();
+		assertEquals(expected, actual);
+	}
 }

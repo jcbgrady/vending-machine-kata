@@ -28,7 +28,7 @@ public class Machine {
 		return this.CoinBank.getReturnedCoins();
 	}
 
-	public void setDisplayMessage(String message) {
+	private void setDisplayMessage(String message) {
 		this.displayMessage = message;
 	}
 
@@ -42,8 +42,10 @@ public class Machine {
 	public boolean selectProdct(String selection) {
 		try {
 			Product Product = this.ProductInventory.selectProduct(selection);
-			if(Product != null)
+			if(Product != null) {
+				this.setDisplayMessage("THANK YOU");
 				return true;
+			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
