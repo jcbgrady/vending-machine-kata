@@ -6,8 +6,6 @@ import java.util.Arrays;
 
 public class CoinBank {
 	
-	private BigDecimal currentAmount = new BigDecimal("0.00");
-	
 	private ArrayList<Coin> acceptableCoins = new ArrayList<Coin>();
 	private ArrayList<Coin> collectedCoins = new ArrayList<Coin>();
 	private ArrayList<Coin> returnedCoins = new ArrayList<Coin>();
@@ -16,35 +14,40 @@ public class CoinBank {
 		this.acceptableCoins.addAll(Arrays.asList(new Nickel(), new Dime(), new Quarter()));
 	}
 	
-	public void processCoin(ArrayList<Double> coinValues) throws Exception {
-		Coin Coin = this.isCoinAcceptable(coinValues);
-		this.addToCurrentAmount(Coin.getValue());
-	}
-
-	public Coin isCoinAcceptable (ArrayList<Double> coinValues) throws Exception {
-		for(Coin Coin : this.acceptableCoins)
-			if(coinValues.equals(Coin.getCoinWeightDiameterThickness())) {
-				this.collectedCoins.add(Coin);
-				return Coin;
-			}
-		
-		// coin not identified, so add a generic coin to returned coins list
-		this.returnedCoins.add(new Coin()); 
-		
-		throw new Exception("Coin is not acceptable");
+	public void processCoinOrReturnIt(ArrayList<Double> coinValues) throws Exception {
+		try {
+			Coin Coin = this.getCoinIfCoinIsAcceptable(coinValues);
+			this.addCoinToCollectedCoins(Coin);
+		} catch(Exception e) {
+			this.returnedCoins.add(new Coin());
+			throw e;
+		}
 	}
 	
-	public BigDecimal addToCurrentAmount(BigDecimal value) {
-		this.setCurrentAmount(this.currentAmount.add(value));
-		return this.currentAmount;
+	private Coin getCoinIfCoinIsAcceptable(ArrayList<Double> coinValues) throws Exception {
+		for(Coin Coin : this.acceptableCoins)
+			if(coinValues.equals(Coin.getCoinWeightDiameterThickness()))
+				return Coin;
+		
+		throw new Exception("Unable to identify coin");
+	}
+	
+	private boolean addCoinToCollectedCoins(Coin Coin) throws Exception {
+		if(this.collectedCoins.add(Coin)) {
+			return true;
+		}
+		
+		throw new Exception("Unable to add Coin to collected coins");
 	}
 
 	public BigDecimal getCurrentAmount() {
+		BigDecimal currentAmount = new BigDecimal("0.00");
+		
+		for(Coin Coin : this.collectedCoins) {
+				currentAmount = currentAmount.add(Coin.getValue());
+		}
+		
 		return currentAmount;
-	}
-
-	public void setCurrentAmount(BigDecimal currentAmount) {
-		this.currentAmount = currentAmount;
 	}
 	
 	public ArrayList<Coin> getReturnedCoins() {

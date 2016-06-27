@@ -15,7 +15,7 @@ public class Machine {
 
 	public String insertCoin(ArrayList<Double> coinWeightDiameterThickness) {
 		try {
-			this.CoinBank.processCoin(coinWeightDiameterThickness);
+			this.CoinBank.processCoinOrReturnIt(coinWeightDiameterThickness);
 			this.setDisplayMessage(this.CoinBank.getCurrentAmount().toString());
 		} catch(Exception e) {
 			System.out.println(e.getMessage());
